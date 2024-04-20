@@ -1,0 +1,2683 @@
+<sdf version='1.7'>
+  <world name='default'>
+    <light name='sun' type='directional'>
+      <cast_shadows>0</cast_shadows>
+      <pose>0 0 10 0 -0 0</pose>
+      <diffuse>0.8 0.8 0.8 1</diffuse>
+      <specular>0.2 0.2 0.2 1</specular>
+      <attenuation>
+        <range>1000</range>
+        <constant>0.9</constant>
+        <linear>0.01</linear>
+        <quadratic>0.001</quadratic>
+      </attenuation>
+      <direction>-0.5 0.1 -0.9</direction>
+      <spot>
+        <inner_angle>0</inner_angle>
+        <outer_angle>0</outer_angle>
+        <falloff>0</falloff>
+      </spot>
+    </light>
+    <model name='ground_plane'>
+      <static>1</static>
+      <link name='link'>
+        <collision name='collision'>
+          <geometry>
+            <plane>
+              <normal>0 0 1</normal>
+              <size>100 100</size>
+            </plane>
+          </geometry>
+          <surface>
+            <friction>
+              <ode>
+                <mu>100</mu>
+                <mu2>50</mu2>
+              </ode>
+              <torsional>
+                <ode/>
+              </torsional>
+            </friction>
+            <contact>
+              <ode/>
+            </contact>
+            <bounce/>
+          </surface>
+          <max_contacts>10</max_contacts>
+        </collision>
+        <visual name='visual'>
+          <cast_shadows>0</cast_shadows>
+          <geometry>
+            <plane>
+              <normal>0 0 1</normal>
+              <size>100 100</size>
+            </plane>
+          </geometry>
+          <material>
+            <script>
+              <uri>file://media/materials/scripts/gazebo.material</uri>
+              <name>Gazebo/Grey</name>
+            </script>
+          </material>
+        </visual>
+        <self_collide>0</self_collide>
+        <enable_wind>0</enable_wind>
+        <kinematic>0</kinematic>
+      </link>
+    </model>
+    <gravity>0 0 -9.8</gravity>
+    <magnetic_field>6e-06 2.3e-05 -4.2e-05</magnetic_field>
+    <atmosphere type='adiabatic'/>
+    <physics type='ode'>
+      <max_step_size>0.001</max_step_size>
+      <real_time_factor>1</real_time_factor>
+      <real_time_update_rate>1000</real_time_update_rate>
+    </physics>
+    <scene>
+      <ambient>0.4 0.4 0.4 1</ambient>
+      <background>0.7 0.7 0.7 1</background>
+      <shadows>1</shadows>
+    </scene>
+    <audio>
+      <device>default</device>
+    </audio>
+    <wind/>
+    <spherical_coordinates>
+      <surface_model>EARTH_WGS84</surface_model>
+      <latitude_deg>49.9</latitude_deg>
+      <longitude_deg>8.9</longitude_deg>
+      <elevation>0</elevation>
+      <heading_deg>90</heading_deg>
+    </spherical_coordinates>
+    <model name='my_grass_plane'>
+      <static>1</static>
+      <link name='link'>
+        <collision name='collision'>
+          <geometry>
+            <plane>
+              <normal>0 0 1</normal>
+              <size>60 60</size>
+            </plane>
+          </geometry>
+          <surface>
+            <friction>
+              <ode>
+                <mu>100</mu>
+                <mu2>50</mu2>
+              </ode>
+              <torsional>
+                <ode/>
+              </torsional>
+            </friction>
+            <contact>
+              <ode/>
+            </contact>
+            <bounce/>
+          </surface>
+          <max_contacts>10</max_contacts>
+        </collision>
+        <visual name='visual'>
+          <cast_shadows>0</cast_shadows>
+          <geometry>
+            <plane>
+              <normal>0 0 1</normal>
+              <size>60 60</size>
+            </plane>
+          </geometry>
+          <material>
+            <script>
+              <uri>model://my_grass_plane/materials/scripts</uri>
+              <uri>model://my_grass_plane/materials/textures/</uri>
+              <name>MyGrassPlane/Image</name>
+            </script>
+          </material>
+        </visual>
+        <self_collide>0</self_collide>
+        <enable_wind>0</enable_wind>
+        <kinematic>0</kinematic>
+      </link>
+      <pose>-0.061313 0.222815 0 0 -0 0</pose>
+    </model>
+    <model name='mud_box'>
+      <static>1</static>
+      <link name='link'>
+        <collision name='collision'>
+          <geometry>
+            <box>
+              <size>8 10 0.2</size>
+            </box>
+          </geometry>
+          <max_contacts>10</max_contacts>
+          <surface>
+            <contact>
+              <ode/>
+            </contact>
+            <bounce/>
+            <friction>
+              <torsional>
+                <ode/>
+              </torsional>
+              <ode/>
+            </friction>
+          </surface>
+        </collision>
+        <visual name='visual_1'>
+          <pose>-2 2.5 0 0 -0 0</pose>
+          <cast_shadows>0</cast_shadows>
+          <geometry>
+            <box>
+              <size>4 5 0.2</size>
+            </box>
+          </geometry>
+          <material>
+            <script>
+              <uri>model://mud_box/materials/scripts</uri>
+              <uri>model://mud_box/materials/textures</uri>
+              <name>vrc/mud</name>
+            </script>
+          </material>
+        </visual>
+        <visual name='visual_2'>
+          <pose>2 2.5 0 0 -0 0</pose>
+          <cast_shadows>0</cast_shadows>
+          <geometry>
+            <box>
+              <size>4 5 0.2</size>
+            </box>
+          </geometry>
+          <material>
+            <script>
+              <uri>model://mud_box/materials/scripts</uri>
+              <uri>model://mud_box/materials/textures</uri>
+              <name>vrc/mud</name>
+            </script>
+          </material>
+        </visual>
+        <visual name='visual_3'>
+          <pose>2 -2.5 0 0 -0 0</pose>
+          <cast_shadows>0</cast_shadows>
+          <geometry>
+            <box>
+              <size>4 5 0.2</size>
+            </box>
+          </geometry>
+          <material>
+            <script>
+              <uri>model://mud_box/materials/scripts</uri>
+              <uri>model://mud_box/materials/textures</uri>
+              <name>vrc/mud</name>
+            </script>
+          </material>
+        </visual>
+        <visual name='visual_4'>
+          <pose>-2 -2.5 0 0 -0 0</pose>
+          <cast_shadows>0</cast_shadows>
+          <geometry>
+            <box>
+              <size>4 5 0.2</size>
+            </box>
+          </geometry>
+          <material>
+            <script>
+              <uri>model://mud_box/materials/scripts</uri>
+              <uri>model://mud_box/materials/textures</uri>
+              <name>vrc/mud</name>
+            </script>
+          </material>
+        </visual>
+        <self_collide>0</self_collide>
+        <enable_wind>0</enable_wind>
+        <kinematic>0</kinematic>
+      </link>
+      <pose>-0.187422 0.092569 0 0 -0 0</pose>
+    </model>
+    <model name='mud_box_0'>
+      <static>1</static>
+      <link name='link'>
+        <collision name='collision'>
+          <geometry>
+            <box>
+              <size>8 10 0.2</size>
+            </box>
+          </geometry>
+          <max_contacts>10</max_contacts>
+          <surface>
+            <contact>
+              <ode/>
+            </contact>
+            <bounce/>
+            <friction>
+              <torsional>
+                <ode/>
+              </torsional>
+              <ode/>
+            </friction>
+          </surface>
+        </collision>
+        <visual name='visual_1'>
+          <pose>-2 2.5 0 0 -0 0</pose>
+          <cast_shadows>0</cast_shadows>
+          <geometry>
+            <box>
+              <size>4 5 0.2</size>
+            </box>
+          </geometry>
+          <material>
+            <script>
+              <uri>model://mud_box/materials/scripts</uri>
+              <uri>model://mud_box/materials/textures</uri>
+              <name>vrc/mud</name>
+            </script>
+          </material>
+        </visual>
+        <visual name='visual_2'>
+          <pose>2 2.5 0 0 -0 0</pose>
+          <cast_shadows>0</cast_shadows>
+          <geometry>
+            <box>
+              <size>4 5 0.2</size>
+            </box>
+          </geometry>
+          <material>
+            <script>
+              <uri>model://mud_box/materials/scripts</uri>
+              <uri>model://mud_box/materials/textures</uri>
+              <name>vrc/mud</name>
+            </script>
+          </material>
+        </visual>
+        <visual name='visual_3'>
+          <pose>2 -2.5 0 0 -0 0</pose>
+          <cast_shadows>0</cast_shadows>
+          <geometry>
+            <box>
+              <size>4 5 0.2</size>
+            </box>
+          </geometry>
+          <material>
+            <script>
+              <uri>model://mud_box/materials/scripts</uri>
+              <uri>model://mud_box/materials/textures</uri>
+              <name>vrc/mud</name>
+            </script>
+          </material>
+        </visual>
+        <visual name='visual_4'>
+          <pose>-2 -2.5 0 0 -0 0</pose>
+          <cast_shadows>0</cast_shadows>
+          <geometry>
+            <box>
+              <size>4 5 0.2</size>
+            </box>
+          </geometry>
+          <material>
+            <script>
+              <uri>model://mud_box/materials/scripts</uri>
+              <uri>model://mud_box/materials/textures</uri>
+              <name>vrc/mud</name>
+            </script>
+          </material>
+        </visual>
+        <self_collide>0</self_collide>
+        <enable_wind>0</enable_wind>
+        <kinematic>0</kinematic>
+      </link>
+      <pose>7.8155 0.086691 0 0 -0 0</pose>
+    </model>
+    <model name='tomato_18'>
+      <static>1</static>
+      <link name='link'>
+        <collision name='collision'>
+          <geometry>
+            <box>
+              <size>0.1 0.1 1</size>
+            </box>
+          </geometry>
+          <max_contacts>10</max_contacts>
+          <surface>
+            <contact>
+              <ode/>
+            </contact>
+            <bounce/>
+            <friction>
+              <torsional>
+                <ode/>
+              </torsional>
+              <ode/>
+            </friction>
+          </surface>
+        </collision>
+        <visual name='branch'>
+          <geometry>
+            <mesh>
+              <uri>model://tomato_18/meshes/tomato.dae</uri>
+              <submesh>
+                <name>Branch1</name>
+              </submesh>
+            </mesh>
+          </geometry>
+          <material>
+            <script>
+              <uri>model://tomato_18/materials/scripts</uri>
+              <uri>model://tomato_18/materials/textures</uri>
+              <name>branch/Diffuse</name>
+            </script>
+          </material>
+        </visual>
+        <visual name='leaf1'>
+          <geometry>
+            <mesh>
+              <uri>model://tomato_18/meshes/tomato.dae</uri>
+              <submesh>
+                <name>Leaf1</name>
+              </submesh>
+            </mesh>
+          </geometry>
+          <material>
+            <script>
+              <uri>model://tomato_18/materials/scripts</uri>
+              <uri>model://tomato_18/materials/textures</uri>
+              <name>leaf1/Diffuse</name>
+            </script>
+          </material>
+        </visual>
+        <visual name='leaf2'>
+          <geometry>
+            <mesh>
+              <uri>model://tomato_18/meshes/tomato.dae</uri>
+              <submesh>
+                <name>Leaf2</name>
+              </submesh>
+            </mesh>
+          </geometry>
+          <material>
+            <script>
+              <uri>model://tomato_18/materials/scripts</uri>
+              <uri>model://tomato_18/materials/textures</uri>
+              <name>leaf2/Diffuse</name>
+            </script>
+          </material>
+        </visual>
+        <visual name='fruit1'>
+          <geometry>
+            <mesh>
+              <uri>model://tomato_18/meshes/tomato.dae</uri>
+              <submesh>
+                <name>Fruit1</name>
+              </submesh>
+            </mesh>
+          </geometry>
+          <material>
+            <script>
+              <uri>model://tomato_18/materials/scripts</uri>
+              <uri>model://tomato_18/materials/textures</uri>
+              <name>fruit1/Diffuse</name>
+            </script>
+          </material>
+        </visual>
+        <visual name='fruit2'>
+          <geometry>
+            <mesh>
+              <uri>model://tomato_18/meshes/tomato.dae</uri>
+              <submesh>
+                <name>Fruit2</name>
+              </submesh>
+            </mesh>
+          </geometry>
+          <material>
+            <script>
+              <uri>model://tomato_18/materials/scripts</uri>
+              <uri>model://tomato_18/materials/textures</uri>
+              <name>fruit2/Diffuse</name>
+            </script>
+          </material>
+        </visual>
+        <visual name='fruit3'>
+          <geometry>
+            <mesh>
+              <uri>model://tomato_18/meshes/tomato.dae</uri>
+              <submesh>
+                <name>Fruit3</name>
+              </submesh>
+            </mesh>
+          </geometry>
+          <material>
+            <script>
+              <uri>model://tomato_18/materials/scripts</uri>
+              <uri>model://tomato_18/materials/textures</uri>
+              <name>fruit3/Diffuse</name>
+            </script>
+          </material>
+        </visual>
+        <visual name='fruit4'>
+          <geometry>
+            <mesh>
+              <uri>model://tomato_18/meshes/tomato.dae</uri>
+              <submesh>
+                <name>Fruit4</name>
+              </submesh>
+            </mesh>
+          </geometry>
+          <material>
+            <script>
+              <uri>model://tomato_18/materials/scripts</uri>
+              <uri>model://tomato_18/materials/textures</uri>
+              <name>fruit4/Diffuse</name>
+            </script>
+          </material>
+        </visual>
+        <visual name='blossom1'>
+          <geometry>
+            <mesh>
+              <uri>model://tomato_18/meshes/tomato.dae</uri>
+              <submesh>
+                <name>Blossom1</name>
+              </submesh>
+            </mesh>
+          </geometry>
+          <material>
+            <script>
+              <uri>model://tomato_18/materials/scripts</uri>
+              <uri>model://tomato_18/materials/textures</uri>
+              <name>blossom1/Diffuse</name>
+            </script>
+          </material>
+        </visual>
+        <visual name='blossom2'>
+          <geometry>
+            <mesh>
+              <uri>model://tomato_18/meshes/tomato.dae</uri>
+              <submesh>
+                <name>Blossom2</name>
+              </submesh>
+            </mesh>
+          </geometry>
+          <material>
+            <script>
+              <uri>model://tomato_18/materials/scripts</uri>
+              <uri>model://tomato_18/materials/textures</uri>
+              <name>blossom2/Diffuse</name>
+            </script>
+          </material>
+        </visual>
+        <visual name='blossom3'>
+          <geometry>
+            <mesh>
+              <uri>model://tomato_18/meshes/tomato.dae</uri>
+              <submesh>
+                <name>Blossom3</name>
+              </submesh>
+            </mesh>
+          </geometry>
+          <material>
+            <script>
+              <uri>model://tomato_18/materials/scripts</uri>
+              <uri>model://tomato_18/materials/textures</uri>
+              <name>blossom3/Diffuse</name>
+            </script>
+          </material>
+        </visual>
+        <self_collide>0</self_collide>
+        <enable_wind>0</enable_wind>
+        <kinematic>0</kinematic>
+      </link>
+      <pose>1.74822 -1.6207 0 0 -0 0</pose>
+    </model>
+    <model name='tomato_9'>
+      <static>1</static>
+      <link name='link'>
+        <collision name='collision'>
+          <geometry>
+            <box>
+              <size>0.1 0.1 1</size>
+            </box>
+          </geometry>
+          <max_contacts>10</max_contacts>
+          <surface>
+            <contact>
+              <ode/>
+            </contact>
+            <bounce/>
+            <friction>
+              <torsional>
+                <ode/>
+              </torsional>
+              <ode/>
+            </friction>
+          </surface>
+        </collision>
+        <visual name='branch'>
+          <geometry>
+            <mesh>
+              <uri>model://tomato_9/meshes/tomato.dae</uri>
+              <submesh>
+                <name>Branch1</name>
+              </submesh>
+            </mesh>
+          </geometry>
+          <material>
+            <script>
+              <uri>model://tomato_9/materials/scripts</uri>
+              <uri>model://tomato_9/materials/textures</uri>
+              <name>branch/Diffuse</name>
+            </script>
+          </material>
+        </visual>
+        <visual name='leaf1'>
+          <geometry>
+            <mesh>
+              <uri>model://tomato_9/meshes/tomato.dae</uri>
+              <submesh>
+                <name>Leaf1</name>
+              </submesh>
+            </mesh>
+          </geometry>
+          <material>
+            <script>
+              <uri>model://tomato_9/materials/scripts</uri>
+              <uri>model://tomato_9/materials/textures</uri>
+              <name>leaf1/Diffuse</name>
+            </script>
+          </material>
+        </visual>
+        <visual name='leaf2'>
+          <geometry>
+            <mesh>
+              <uri>model://tomato_9/meshes/tomato.dae</uri>
+              <submesh>
+                <name>Leaf2</name>
+              </submesh>
+            </mesh>
+          </geometry>
+          <material>
+            <script>
+              <uri>model://tomato_9/materials/scripts</uri>
+              <uri>model://tomato_9/materials/textures</uri>
+              <name>leaf2/Diffuse</name>
+            </script>
+          </material>
+        </visual>
+        <visual name='fruit1'>
+          <geometry>
+            <mesh>
+              <uri>model://tomato_9/meshes/tomato.dae</uri>
+              <submesh>
+                <name>Fruit1</name>
+              </submesh>
+            </mesh>
+          </geometry>
+          <material>
+            <script>
+              <uri>model://tomato_9/materials/scripts</uri>
+              <uri>model://tomato_9/materials/textures</uri>
+              <name>fruit1/Diffuse</name>
+            </script>
+          </material>
+        </visual>
+        <visual name='fruit2'>
+          <geometry>
+            <mesh>
+              <uri>model://tomato_9/meshes/tomato.dae</uri>
+              <submesh>
+                <name>Fruit2</name>
+              </submesh>
+            </mesh>
+          </geometry>
+          <material>
+            <script>
+              <uri>model://tomato_9/materials/scripts</uri>
+              <uri>model://tomato_9/materials/textures</uri>
+              <name>fruit2/Diffuse</name>
+            </script>
+          </material>
+        </visual>
+        <visual name='fruit3'>
+          <geometry>
+            <mesh>
+              <uri>model://tomato_9/meshes/tomato.dae</uri>
+              <submesh>
+                <name>Fruit3</name>
+              </submesh>
+            </mesh>
+          </geometry>
+          <material>
+            <script>
+              <uri>model://tomato_9/materials/scripts</uri>
+              <uri>model://tomato_9/materials/textures</uri>
+              <name>fruit3/Diffuse</name>
+            </script>
+          </material>
+        </visual>
+        <visual name='fruit4'>
+          <geometry>
+            <mesh>
+              <uri>model://tomato_9/meshes/tomato.dae</uri>
+              <submesh>
+                <name>Fruit4</name>
+              </submesh>
+            </mesh>
+          </geometry>
+          <material>
+            <script>
+              <uri>model://tomato_9/materials/scripts</uri>
+              <uri>model://tomato_9/materials/textures</uri>
+              <name>fruit4/Diffuse</name>
+            </script>
+          </material>
+        </visual>
+        <visual name='blossom1'>
+          <geometry>
+            <mesh>
+              <uri>model://tomato_9/meshes/tomato.dae</uri>
+              <submesh>
+                <name>Blossom1</name>
+              </submesh>
+            </mesh>
+          </geometry>
+          <material>
+            <script>
+              <uri>model://tomato_9/materials/scripts</uri>
+              <uri>model://tomato_9/materials/textures</uri>
+              <name>blossom1/Diffuse</name>
+            </script>
+          </material>
+        </visual>
+        <visual name='blossom2'>
+          <geometry>
+            <mesh>
+              <uri>model://tomato_9/meshes/tomato.dae</uri>
+              <submesh>
+                <name>Blossom2</name>
+              </submesh>
+            </mesh>
+          </geometry>
+          <material>
+            <script>
+              <uri>model://tomato_9/materials/scripts</uri>
+              <uri>model://tomato_9/materials/textures</uri>
+              <name>blossom2/Diffuse</name>
+            </script>
+          </material>
+        </visual>
+        <visual name='blossom3'>
+          <geometry>
+            <mesh>
+              <uri>model://tomato_9/meshes/tomato.dae</uri>
+              <submesh>
+                <name>Blossom3</name>
+              </submesh>
+            </mesh>
+          </geometry>
+          <material>
+            <script>
+              <uri>model://tomato_9/materials/scripts</uri>
+              <uri>model://tomato_9/materials/textures</uri>
+              <name>blossom3/Diffuse</name>
+            </script>
+          </material>
+        </visual>
+        <self_collide>0</self_collide>
+        <enable_wind>0</enable_wind>
+        <kinematic>0</kinematic>
+      </link>
+      <pose>1.5241 1.42174 0 0 -0 0</pose>
+    </model>
+    <model name='tomato_16'>
+      <static>1</static>
+      <link name='link'>
+        <collision name='collision'>
+          <geometry>
+            <box>
+              <size>0.1 0.1 1</size>
+            </box>
+          </geometry>
+          <max_contacts>10</max_contacts>
+          <surface>
+            <contact>
+              <ode/>
+            </contact>
+            <bounce/>
+            <friction>
+              <torsional>
+                <ode/>
+              </torsional>
+              <ode/>
+            </friction>
+          </surface>
+        </collision>
+        <visual name='branch'>
+          <geometry>
+            <mesh>
+              <uri>model://tomato_16/meshes/tomato.dae</uri>
+              <submesh>
+                <name>Branch1</name>
+              </submesh>
+            </mesh>
+          </geometry>
+          <material>
+            <script>
+              <uri>model://tomato_16/materials/scripts</uri>
+              <uri>model://tomato_16/materials/textures</uri>
+              <name>branch/Diffuse</name>
+            </script>
+          </material>
+        </visual>
+        <visual name='leaf1'>
+          <geometry>
+            <mesh>
+              <uri>model://tomato_16/meshes/tomato.dae</uri>
+              <submesh>
+                <name>Leaf1</name>
+              </submesh>
+            </mesh>
+          </geometry>
+          <material>
+            <script>
+              <uri>model://tomato_16/materials/scripts</uri>
+              <uri>model://tomato_16/materials/textures</uri>
+              <name>leaf1/Diffuse</name>
+            </script>
+          </material>
+        </visual>
+        <visual name='leaf2'>
+          <geometry>
+            <mesh>
+              <uri>model://tomato_16/meshes/tomato.dae</uri>
+              <submesh>
+                <name>Leaf2</name>
+              </submesh>
+            </mesh>
+          </geometry>
+          <material>
+            <script>
+              <uri>model://tomato_16/materials/scripts</uri>
+              <uri>model://tomato_16/materials/textures</uri>
+              <name>leaf2/Diffuse</name>
+            </script>
+          </material>
+        </visual>
+        <visual name='fruit1'>
+          <geometry>
+            <mesh>
+              <uri>model://tomato_16/meshes/tomato.dae</uri>
+              <submesh>
+                <name>Fruit1</name>
+              </submesh>
+            </mesh>
+          </geometry>
+          <material>
+            <script>
+              <uri>model://tomato_16/materials/scripts</uri>
+              <uri>model://tomato_16/materials/textures</uri>
+              <name>fruit1/Diffuse</name>
+            </script>
+          </material>
+        </visual>
+        <visual name='fruit2'>
+          <geometry>
+            <mesh>
+              <uri>model://tomato_16/meshes/tomato.dae</uri>
+              <submesh>
+                <name>Fruit2</name>
+              </submesh>
+            </mesh>
+          </geometry>
+          <material>
+            <script>
+              <uri>model://tomato_16/materials/scripts</uri>
+              <uri>model://tomato_16/materials/textures</uri>
+              <name>fruit2/Diffuse</name>
+            </script>
+          </material>
+        </visual>
+        <visual name='fruit3'>
+          <geometry>
+            <mesh>
+              <uri>model://tomato_16/meshes/tomato.dae</uri>
+              <submesh>
+                <name>Fruit3</name>
+              </submesh>
+            </mesh>
+          </geometry>
+          <material>
+            <script>
+              <uri>model://tomato_16/materials/scripts</uri>
+              <uri>model://tomato_16/materials/textures</uri>
+              <name>fruit3/Diffuse</name>
+            </script>
+          </material>
+        </visual>
+        <visual name='fruit4'>
+          <geometry>
+            <mesh>
+              <uri>model://tomato_16/meshes/tomato.dae</uri>
+              <submesh>
+                <name>Fruit4</name>
+              </submesh>
+            </mesh>
+          </geometry>
+          <material>
+            <script>
+              <uri>model://tomato_16/materials/scripts</uri>
+              <uri>model://tomato_16/materials/textures</uri>
+              <name>fruit4/Diffuse</name>
+            </script>
+          </material>
+        </visual>
+        <visual name='blossom1'>
+          <geometry>
+            <mesh>
+              <uri>model://tomato_16/meshes/tomato.dae</uri>
+              <submesh>
+                <name>Blossom1</name>
+              </submesh>
+            </mesh>
+          </geometry>
+          <material>
+            <script>
+              <uri>model://tomato_16/materials/scripts</uri>
+              <uri>model://tomato_16/materials/textures</uri>
+              <name>blossom1/Diffuse</name>
+            </script>
+          </material>
+        </visual>
+        <visual name='blossom2'>
+          <geometry>
+            <mesh>
+              <uri>model://tomato_16/meshes/tomato.dae</uri>
+              <submesh>
+                <name>Blossom2</name>
+              </submesh>
+            </mesh>
+          </geometry>
+          <material>
+            <script>
+              <uri>model://tomato_16/materials/scripts</uri>
+              <uri>model://tomato_16/materials/textures</uri>
+              <name>blossom2/Diffuse</name>
+            </script>
+          </material>
+        </visual>
+        <visual name='blossom3'>
+          <geometry>
+            <mesh>
+              <uri>model://tomato_16/meshes/tomato.dae</uri>
+              <submesh>
+                <name>Blossom3</name>
+              </submesh>
+            </mesh>
+          </geometry>
+          <material>
+            <script>
+              <uri>model://tomato_16/materials/scripts</uri>
+              <uri>model://tomato_16/materials/textures</uri>
+              <name>blossom3/Diffuse</name>
+            </script>
+          </material>
+        </visual>
+        <self_collide>0</self_collide>
+        <enable_wind>0</enable_wind>
+        <kinematic>0</kinematic>
+      </link>
+      <pose>1.62518 -0.075046 0 0 -0 0</pose>
+    </model>
+    <model name='tomato_44'>
+      <static>1</static>
+      <link name='link'>
+        <collision name='collision'>
+          <geometry>
+            <box>
+              <size>0.1 0.1 1</size>
+            </box>
+          </geometry>
+          <max_contacts>10</max_contacts>
+          <surface>
+            <contact>
+              <ode/>
+            </contact>
+            <bounce/>
+            <friction>
+              <torsional>
+                <ode/>
+              </torsional>
+              <ode/>
+            </friction>
+          </surface>
+        </collision>
+        <visual name='branch'>
+          <geometry>
+            <mesh>
+              <uri>model://tomato_44/meshes/tomato.dae</uri>
+              <submesh>
+                <name>Branch1</name>
+              </submesh>
+            </mesh>
+          </geometry>
+          <material>
+            <script>
+              <uri>model://tomato_44/materials/scripts</uri>
+              <uri>model://tomato_44/materials/textures</uri>
+              <name>branch/Diffuse</name>
+            </script>
+          </material>
+        </visual>
+        <visual name='leaf1'>
+          <geometry>
+            <mesh>
+              <uri>model://tomato_44/meshes/tomato.dae</uri>
+              <submesh>
+                <name>Leaf1</name>
+              </submesh>
+            </mesh>
+          </geometry>
+          <material>
+            <script>
+              <uri>model://tomato_44/materials/scripts</uri>
+              <uri>model://tomato_44/materials/textures</uri>
+              <name>leaf1/Diffuse</name>
+            </script>
+          </material>
+        </visual>
+        <visual name='leaf2'>
+          <geometry>
+            <mesh>
+              <uri>model://tomato_44/meshes/tomato.dae</uri>
+              <submesh>
+                <name>Leaf2</name>
+              </submesh>
+            </mesh>
+          </geometry>
+          <material>
+            <script>
+              <uri>model://tomato_44/materials/scripts</uri>
+              <uri>model://tomato_44/materials/textures</uri>
+              <name>leaf2/Diffuse</name>
+            </script>
+          </material>
+        </visual>
+        <visual name='fruit1'>
+          <geometry>
+            <mesh>
+              <uri>model://tomato_44/meshes/tomato.dae</uri>
+              <submesh>
+                <name>Fruit1</name>
+              </submesh>
+            </mesh>
+          </geometry>
+          <material>
+            <script>
+              <uri>model://tomato_44/materials/scripts</uri>
+              <uri>model://tomato_44/materials/textures</uri>
+              <name>fruit1/Diffuse</name>
+            </script>
+          </material>
+        </visual>
+        <visual name='fruit2'>
+          <geometry>
+            <mesh>
+              <uri>model://tomato_44/meshes/tomato.dae</uri>
+              <submesh>
+                <name>Fruit2</name>
+              </submesh>
+            </mesh>
+          </geometry>
+          <material>
+            <script>
+              <uri>model://tomato_44/materials/scripts</uri>
+              <uri>model://tomato_44/materials/textures</uri>
+              <name>fruit2/Diffuse</name>
+            </script>
+          </material>
+        </visual>
+        <visual name='fruit3'>
+          <geometry>
+            <mesh>
+              <uri>model://tomato_44/meshes/tomato.dae</uri>
+              <submesh>
+                <name>Fruit3</name>
+              </submesh>
+            </mesh>
+          </geometry>
+          <material>
+            <script>
+              <uri>model://tomato_44/materials/scripts</uri>
+              <uri>model://tomato_44/materials/textures</uri>
+              <name>fruit3/Diffuse</name>
+            </script>
+          </material>
+        </visual>
+        <visual name='fruit4'>
+          <geometry>
+            <mesh>
+              <uri>model://tomato_44/meshes/tomato.dae</uri>
+              <submesh>
+                <name>Fruit4</name>
+              </submesh>
+            </mesh>
+          </geometry>
+          <material>
+            <script>
+              <uri>model://tomato_44/materials/scripts</uri>
+              <uri>model://tomato_44/materials/textures</uri>
+              <name>fruit4/Diffuse</name>
+            </script>
+          </material>
+        </visual>
+        <visual name='blossom1'>
+          <geometry>
+            <mesh>
+              <uri>model://tomato_44/meshes/tomato.dae</uri>
+              <submesh>
+                <name>Blossom1</name>
+              </submesh>
+            </mesh>
+          </geometry>
+          <material>
+            <script>
+              <uri>model://tomato_44/materials/scripts</uri>
+              <uri>model://tomato_44/materials/textures</uri>
+              <name>blossom1/Diffuse</name>
+            </script>
+          </material>
+        </visual>
+        <visual name='blossom2'>
+          <geometry>
+            <mesh>
+              <uri>model://tomato_44/meshes/tomato.dae</uri>
+              <submesh>
+                <name>Blossom2</name>
+              </submesh>
+            </mesh>
+          </geometry>
+          <material>
+            <script>
+              <uri>model://tomato_44/materials/scripts</uri>
+              <uri>model://tomato_44/materials/textures</uri>
+              <name>blossom2/Diffuse</name>
+            </script>
+          </material>
+        </visual>
+        <visual name='blossom3'>
+          <geometry>
+            <mesh>
+              <uri>model://tomato_44/meshes/tomato.dae</uri>
+              <submesh>
+                <name>Blossom3</name>
+              </submesh>
+            </mesh>
+          </geometry>
+          <material>
+            <script>
+              <uri>model://tomato_44/materials/scripts</uri>
+              <uri>model://tomato_44/materials/textures</uri>
+              <name>blossom3/Diffuse</name>
+            </script>
+          </material>
+        </visual>
+        <self_collide>0</self_collide>
+        <enable_wind>0</enable_wind>
+        <kinematic>0</kinematic>
+      </link>
+      <pose>3.63139 -1.70999 0 0 -0 0</pose>
+    </model>
+    <model name='tomato_27'>
+      <static>1</static>
+      <link name='link'>
+        <collision name='collision'>
+          <geometry>
+            <box>
+              <size>0.1 0.1 1</size>
+            </box>
+          </geometry>
+          <max_contacts>10</max_contacts>
+          <surface>
+            <contact>
+              <ode/>
+            </contact>
+            <bounce/>
+            <friction>
+              <torsional>
+                <ode/>
+              </torsional>
+              <ode/>
+            </friction>
+          </surface>
+        </collision>
+        <visual name='branch'>
+          <geometry>
+            <mesh>
+              <uri>model://tomato_27/meshes/tomato.dae</uri>
+              <submesh>
+                <name>Branch1</name>
+              </submesh>
+            </mesh>
+          </geometry>
+          <material>
+            <script>
+              <uri>model://tomato_27/materials/scripts</uri>
+              <uri>model://tomato_27/materials/textures</uri>
+              <name>branch/Diffuse</name>
+            </script>
+          </material>
+        </visual>
+        <visual name='leaf1'>
+          <geometry>
+            <mesh>
+              <uri>model://tomato_27/meshes/tomato.dae</uri>
+              <submesh>
+                <name>Leaf1</name>
+              </submesh>
+            </mesh>
+          </geometry>
+          <material>
+            <script>
+              <uri>model://tomato_27/materials/scripts</uri>
+              <uri>model://tomato_27/materials/textures</uri>
+              <name>leaf1/Diffuse</name>
+            </script>
+          </material>
+        </visual>
+        <visual name='leaf2'>
+          <geometry>
+            <mesh>
+              <uri>model://tomato_27/meshes/tomato.dae</uri>
+              <submesh>
+                <name>Leaf2</name>
+              </submesh>
+            </mesh>
+          </geometry>
+          <material>
+            <script>
+              <uri>model://tomato_27/materials/scripts</uri>
+              <uri>model://tomato_27/materials/textures</uri>
+              <name>leaf2/Diffuse</name>
+            </script>
+          </material>
+        </visual>
+        <visual name='fruit1'>
+          <geometry>
+            <mesh>
+              <uri>model://tomato_27/meshes/tomato.dae</uri>
+              <submesh>
+                <name>Fruit1</name>
+              </submesh>
+            </mesh>
+          </geometry>
+          <material>
+            <script>
+              <uri>model://tomato_27/materials/scripts</uri>
+              <uri>model://tomato_27/materials/textures</uri>
+              <name>fruit1/Diffuse</name>
+            </script>
+          </material>
+        </visual>
+        <visual name='fruit2'>
+          <geometry>
+            <mesh>
+              <uri>model://tomato_27/meshes/tomato.dae</uri>
+              <submesh>
+                <name>Fruit2</name>
+              </submesh>
+            </mesh>
+          </geometry>
+          <material>
+            <script>
+              <uri>model://tomato_27/materials/scripts</uri>
+              <uri>model://tomato_27/materials/textures</uri>
+              <name>fruit2/Diffuse</name>
+            </script>
+          </material>
+        </visual>
+        <visual name='fruit3'>
+          <geometry>
+            <mesh>
+              <uri>model://tomato_27/meshes/tomato.dae</uri>
+              <submesh>
+                <name>Fruit3</name>
+              </submesh>
+            </mesh>
+          </geometry>
+          <material>
+            <script>
+              <uri>model://tomato_27/materials/scripts</uri>
+              <uri>model://tomato_27/materials/textures</uri>
+              <name>fruit3/Diffuse</name>
+            </script>
+          </material>
+        </visual>
+        <visual name='fruit4'>
+          <geometry>
+            <mesh>
+              <uri>model://tomato_27/meshes/tomato.dae</uri>
+              <submesh>
+                <name>Fruit4</name>
+              </submesh>
+            </mesh>
+          </geometry>
+          <material>
+            <script>
+              <uri>model://tomato_27/materials/scripts</uri>
+              <uri>model://tomato_27/materials/textures</uri>
+              <name>fruit4/Diffuse</name>
+            </script>
+          </material>
+        </visual>
+        <visual name='blossom1'>
+          <geometry>
+            <mesh>
+              <uri>model://tomato_27/meshes/tomato.dae</uri>
+              <submesh>
+                <name>Blossom1</name>
+              </submesh>
+            </mesh>
+          </geometry>
+          <material>
+            <script>
+              <uri>model://tomato_27/materials/scripts</uri>
+              <uri>model://tomato_27/materials/textures</uri>
+              <name>blossom1/Diffuse</name>
+            </script>
+          </material>
+        </visual>
+        <visual name='blossom2'>
+          <geometry>
+            <mesh>
+              <uri>model://tomato_27/meshes/tomato.dae</uri>
+              <submesh>
+                <name>Blossom2</name>
+              </submesh>
+            </mesh>
+          </geometry>
+          <material>
+            <script>
+              <uri>model://tomato_27/materials/scripts</uri>
+              <uri>model://tomato_27/materials/textures</uri>
+              <name>blossom2/Diffuse</name>
+            </script>
+          </material>
+        </visual>
+        <visual name='blossom3'>
+          <geometry>
+            <mesh>
+              <uri>model://tomato_27/meshes/tomato.dae</uri>
+              <submesh>
+                <name>Blossom3</name>
+              </submesh>
+            </mesh>
+          </geometry>
+          <material>
+            <script>
+              <uri>model://tomato_27/materials/scripts</uri>
+              <uri>model://tomato_27/materials/textures</uri>
+              <name>blossom3/Diffuse</name>
+            </script>
+          </material>
+        </visual>
+        <self_collide>0</self_collide>
+        <enable_wind>0</enable_wind>
+        <kinematic>0</kinematic>
+      </link>
+      <pose>5.21401 -1.62664 0 0 -0 0</pose>
+    </model>
+    <model name='tomato_13'>
+      <static>1</static>
+      <link name='link'>
+        <collision name='collision'>
+          <geometry>
+            <box>
+              <size>0.1 0.1 1</size>
+            </box>
+          </geometry>
+          <max_contacts>10</max_contacts>
+          <surface>
+            <contact>
+              <ode/>
+            </contact>
+            <bounce/>
+            <friction>
+              <torsional>
+                <ode/>
+              </torsional>
+              <ode/>
+            </friction>
+          </surface>
+        </collision>
+        <visual name='branch'>
+          <geometry>
+            <mesh>
+              <uri>model://tomato_13/meshes/tomato.dae</uri>
+              <submesh>
+                <name>Branch1</name>
+              </submesh>
+            </mesh>
+          </geometry>
+          <material>
+            <script>
+              <uri>model://tomato_13/materials/scripts</uri>
+              <uri>model://tomato_13/materials/textures</uri>
+              <name>branch/Diffuse</name>
+            </script>
+          </material>
+        </visual>
+        <visual name='leaf1'>
+          <geometry>
+            <mesh>
+              <uri>model://tomato_13/meshes/tomato.dae</uri>
+              <submesh>
+                <name>Leaf1</name>
+              </submesh>
+            </mesh>
+          </geometry>
+          <material>
+            <script>
+              <uri>model://tomato_13/materials/scripts</uri>
+              <uri>model://tomato_13/materials/textures</uri>
+              <name>leaf1/Diffuse</name>
+            </script>
+          </material>
+        </visual>
+        <visual name='leaf2'>
+          <geometry>
+            <mesh>
+              <uri>model://tomato_13/meshes/tomato.dae</uri>
+              <submesh>
+                <name>Leaf2</name>
+              </submesh>
+            </mesh>
+          </geometry>
+          <material>
+            <script>
+              <uri>model://tomato_13/materials/scripts</uri>
+              <uri>model://tomato_13/materials/textures</uri>
+              <name>leaf2/Diffuse</name>
+            </script>
+          </material>
+        </visual>
+        <visual name='fruit1'>
+          <geometry>
+            <mesh>
+              <uri>model://tomato_13/meshes/tomato.dae</uri>
+              <submesh>
+                <name>Fruit1</name>
+              </submesh>
+            </mesh>
+          </geometry>
+          <material>
+            <script>
+              <uri>model://tomato_13/materials/scripts</uri>
+              <uri>model://tomato_13/materials/textures</uri>
+              <name>fruit1/Diffuse</name>
+            </script>
+          </material>
+        </visual>
+        <visual name='fruit2'>
+          <geometry>
+            <mesh>
+              <uri>model://tomato_13/meshes/tomato.dae</uri>
+              <submesh>
+                <name>Fruit2</name>
+              </submesh>
+            </mesh>
+          </geometry>
+          <material>
+            <script>
+              <uri>model://tomato_13/materials/scripts</uri>
+              <uri>model://tomato_13/materials/textures</uri>
+              <name>fruit2/Diffuse</name>
+            </script>
+          </material>
+        </visual>
+        <visual name='fruit3'>
+          <geometry>
+            <mesh>
+              <uri>model://tomato_13/meshes/tomato.dae</uri>
+              <submesh>
+                <name>Fruit3</name>
+              </submesh>
+            </mesh>
+          </geometry>
+          <material>
+            <script>
+              <uri>model://tomato_13/materials/scripts</uri>
+              <uri>model://tomato_13/materials/textures</uri>
+              <name>fruit3/Diffuse</name>
+            </script>
+          </material>
+        </visual>
+        <visual name='fruit4'>
+          <geometry>
+            <mesh>
+              <uri>model://tomato_13/meshes/tomato.dae</uri>
+              <submesh>
+                <name>Fruit4</name>
+              </submesh>
+            </mesh>
+          </geometry>
+          <material>
+            <script>
+              <uri>model://tomato_13/materials/scripts</uri>
+              <uri>model://tomato_13/materials/textures</uri>
+              <name>fruit4/Diffuse</name>
+            </script>
+          </material>
+        </visual>
+        <visual name='blossom1'>
+          <geometry>
+            <mesh>
+              <uri>model://tomato_13/meshes/tomato.dae</uri>
+              <submesh>
+                <name>Blossom1</name>
+              </submesh>
+            </mesh>
+          </geometry>
+          <material>
+            <script>
+              <uri>model://tomato_13/materials/scripts</uri>
+              <uri>model://tomato_13/materials/textures</uri>
+              <name>blossom1/Diffuse</name>
+            </script>
+          </material>
+        </visual>
+        <visual name='blossom2'>
+          <geometry>
+            <mesh>
+              <uri>model://tomato_13/meshes/tomato.dae</uri>
+              <submesh>
+                <name>Blossom2</name>
+              </submesh>
+            </mesh>
+          </geometry>
+          <material>
+            <script>
+              <uri>model://tomato_13/materials/scripts</uri>
+              <uri>model://tomato_13/materials/textures</uri>
+              <name>blossom2/Diffuse</name>
+            </script>
+          </material>
+        </visual>
+        <visual name='blossom3'>
+          <geometry>
+            <mesh>
+              <uri>model://tomato_13/meshes/tomato.dae</uri>
+              <submesh>
+                <name>Blossom3</name>
+              </submesh>
+            </mesh>
+          </geometry>
+          <material>
+            <script>
+              <uri>model://tomato_13/materials/scripts</uri>
+              <uri>model://tomato_13/materials/textures</uri>
+              <name>blossom3/Diffuse</name>
+            </script>
+          </material>
+        </visual>
+        <self_collide>0</self_collide>
+        <enable_wind>0</enable_wind>
+        <kinematic>0</kinematic>
+      </link>
+      <pose>6.79214 -1.67789 0 0 -0 0</pose>
+    </model>
+    <model name='tomato_44_0'>
+      <static>1</static>
+      <link name='link'>
+        <collision name='collision'>
+          <geometry>
+            <box>
+              <size>0.1 0.1 1</size>
+            </box>
+          </geometry>
+          <max_contacts>10</max_contacts>
+          <surface>
+            <contact>
+              <ode/>
+            </contact>
+            <bounce/>
+            <friction>
+              <torsional>
+                <ode/>
+              </torsional>
+              <ode/>
+            </friction>
+          </surface>
+        </collision>
+        <visual name='branch'>
+          <geometry>
+            <mesh>
+              <uri>model://tomato_44/meshes/tomato.dae</uri>
+              <submesh>
+                <name>Branch1</name>
+              </submesh>
+            </mesh>
+          </geometry>
+          <material>
+            <script>
+              <uri>model://tomato_44/materials/scripts</uri>
+              <uri>model://tomato_44/materials/textures</uri>
+              <name>branch/Diffuse</name>
+            </script>
+          </material>
+        </visual>
+        <visual name='leaf1'>
+          <geometry>
+            <mesh>
+              <uri>model://tomato_44/meshes/tomato.dae</uri>
+              <submesh>
+                <name>Leaf1</name>
+              </submesh>
+            </mesh>
+          </geometry>
+          <material>
+            <script>
+              <uri>model://tomato_44/materials/scripts</uri>
+              <uri>model://tomato_44/materials/textures</uri>
+              <name>leaf1/Diffuse</name>
+            </script>
+          </material>
+        </visual>
+        <visual name='leaf2'>
+          <geometry>
+            <mesh>
+              <uri>model://tomato_44/meshes/tomato.dae</uri>
+              <submesh>
+                <name>Leaf2</name>
+              </submesh>
+            </mesh>
+          </geometry>
+          <material>
+            <script>
+              <uri>model://tomato_44/materials/scripts</uri>
+              <uri>model://tomato_44/materials/textures</uri>
+              <name>leaf2/Diffuse</name>
+            </script>
+          </material>
+        </visual>
+        <visual name='fruit1'>
+          <geometry>
+            <mesh>
+              <uri>model://tomato_44/meshes/tomato.dae</uri>
+              <submesh>
+                <name>Fruit1</name>
+              </submesh>
+            </mesh>
+          </geometry>
+          <material>
+            <script>
+              <uri>model://tomato_44/materials/scripts</uri>
+              <uri>model://tomato_44/materials/textures</uri>
+              <name>fruit1/Diffuse</name>
+            </script>
+          </material>
+        </visual>
+        <visual name='fruit2'>
+          <geometry>
+            <mesh>
+              <uri>model://tomato_44/meshes/tomato.dae</uri>
+              <submesh>
+                <name>Fruit2</name>
+              </submesh>
+            </mesh>
+          </geometry>
+          <material>
+            <script>
+              <uri>model://tomato_44/materials/scripts</uri>
+              <uri>model://tomato_44/materials/textures</uri>
+              <name>fruit2/Diffuse</name>
+            </script>
+          </material>
+        </visual>
+        <visual name='fruit3'>
+          <geometry>
+            <mesh>
+              <uri>model://tomato_44/meshes/tomato.dae</uri>
+              <submesh>
+                <name>Fruit3</name>
+              </submesh>
+            </mesh>
+          </geometry>
+          <material>
+            <script>
+              <uri>model://tomato_44/materials/scripts</uri>
+              <uri>model://tomato_44/materials/textures</uri>
+              <name>fruit3/Diffuse</name>
+            </script>
+          </material>
+        </visual>
+        <visual name='fruit4'>
+          <geometry>
+            <mesh>
+              <uri>model://tomato_44/meshes/tomato.dae</uri>
+              <submesh>
+                <name>Fruit4</name>
+              </submesh>
+            </mesh>
+          </geometry>
+          <material>
+            <script>
+              <uri>model://tomato_44/materials/scripts</uri>
+              <uri>model://tomato_44/materials/textures</uri>
+              <name>fruit4/Diffuse</name>
+            </script>
+          </material>
+        </visual>
+        <visual name='blossom1'>
+          <geometry>
+            <mesh>
+              <uri>model://tomato_44/meshes/tomato.dae</uri>
+              <submesh>
+                <name>Blossom1</name>
+              </submesh>
+            </mesh>
+          </geometry>
+          <material>
+            <script>
+              <uri>model://tomato_44/materials/scripts</uri>
+              <uri>model://tomato_44/materials/textures</uri>
+              <name>blossom1/Diffuse</name>
+            </script>
+          </material>
+        </visual>
+        <visual name='blossom2'>
+          <geometry>
+            <mesh>
+              <uri>model://tomato_44/meshes/tomato.dae</uri>
+              <submesh>
+                <name>Blossom2</name>
+              </submesh>
+            </mesh>
+          </geometry>
+          <material>
+            <script>
+              <uri>model://tomato_44/materials/scripts</uri>
+              <uri>model://tomato_44/materials/textures</uri>
+              <name>blossom2/Diffuse</name>
+            </script>
+          </material>
+        </visual>
+        <visual name='blossom3'>
+          <geometry>
+            <mesh>
+              <uri>model://tomato_44/meshes/tomato.dae</uri>
+              <submesh>
+                <name>Blossom3</name>
+              </submesh>
+            </mesh>
+          </geometry>
+          <material>
+            <script>
+              <uri>model://tomato_44/materials/scripts</uri>
+              <uri>model://tomato_44/materials/textures</uri>
+              <name>blossom3/Diffuse</name>
+            </script>
+          </material>
+        </visual>
+        <self_collide>0</self_collide>
+        <enable_wind>0</enable_wind>
+        <kinematic>0</kinematic>
+      </link>
+      <pose>8.17311 -1.53809 0 0 -0 0</pose>
+    </model>
+    <model name='tomato_32'>
+      <static>1</static>
+      <link name='link'>
+        <collision name='collision'>
+          <geometry>
+            <box>
+              <size>0.1 0.1 1</size>
+            </box>
+          </geometry>
+          <max_contacts>10</max_contacts>
+          <surface>
+            <contact>
+              <ode/>
+            </contact>
+            <bounce/>
+            <friction>
+              <torsional>
+                <ode/>
+              </torsional>
+              <ode/>
+            </friction>
+          </surface>
+        </collision>
+        <visual name='branch'>
+          <geometry>
+            <mesh>
+              <uri>model://tomato_32/meshes/tomato.dae</uri>
+              <submesh>
+                <name>Branch1</name>
+              </submesh>
+            </mesh>
+          </geometry>
+          <material>
+            <script>
+              <uri>model://tomato_32/materials/scripts</uri>
+              <uri>model://tomato_32/materials/textures</uri>
+              <name>branch/Diffuse</name>
+            </script>
+          </material>
+        </visual>
+        <visual name='leaf1'>
+          <geometry>
+            <mesh>
+              <uri>model://tomato_32/meshes/tomato.dae</uri>
+              <submesh>
+                <name>Leaf1</name>
+              </submesh>
+            </mesh>
+          </geometry>
+          <material>
+            <script>
+              <uri>model://tomato_32/materials/scripts</uri>
+              <uri>model://tomato_32/materials/textures</uri>
+              <name>leaf1/Diffuse</name>
+            </script>
+          </material>
+        </visual>
+        <visual name='leaf2'>
+          <geometry>
+            <mesh>
+              <uri>model://tomato_32/meshes/tomato.dae</uri>
+              <submesh>
+                <name>Leaf2</name>
+              </submesh>
+            </mesh>
+          </geometry>
+          <material>
+            <script>
+              <uri>model://tomato_32/materials/scripts</uri>
+              <uri>model://tomato_32/materials/textures</uri>
+              <name>leaf2/Diffuse</name>
+            </script>
+          </material>
+        </visual>
+        <visual name='fruit1'>
+          <geometry>
+            <mesh>
+              <uri>model://tomato_32/meshes/tomato.dae</uri>
+              <submesh>
+                <name>Fruit1</name>
+              </submesh>
+            </mesh>
+          </geometry>
+          <material>
+            <script>
+              <uri>model://tomato_32/materials/scripts</uri>
+              <uri>model://tomato_32/materials/textures</uri>
+              <name>fruit1/Diffuse</name>
+            </script>
+          </material>
+        </visual>
+        <visual name='fruit2'>
+          <geometry>
+            <mesh>
+              <uri>model://tomato_32/meshes/tomato.dae</uri>
+              <submesh>
+                <name>Fruit2</name>
+              </submesh>
+            </mesh>
+          </geometry>
+          <material>
+            <script>
+              <uri>model://tomato_32/materials/scripts</uri>
+              <uri>model://tomato_32/materials/textures</uri>
+              <name>fruit2/Diffuse</name>
+            </script>
+          </material>
+        </visual>
+        <visual name='fruit3'>
+          <geometry>
+            <mesh>
+              <uri>model://tomato_32/meshes/tomato.dae</uri>
+              <submesh>
+                <name>Fruit3</name>
+              </submesh>
+            </mesh>
+          </geometry>
+          <material>
+            <script>
+              <uri>model://tomato_32/materials/scripts</uri>
+              <uri>model://tomato_32/materials/textures</uri>
+              <name>fruit3/Diffuse</name>
+            </script>
+          </material>
+        </visual>
+        <visual name='fruit4'>
+          <geometry>
+            <mesh>
+              <uri>model://tomato_32/meshes/tomato.dae</uri>
+              <submesh>
+                <name>Fruit4</name>
+              </submesh>
+            </mesh>
+          </geometry>
+          <material>
+            <script>
+              <uri>model://tomato_32/materials/scripts</uri>
+              <uri>model://tomato_32/materials/textures</uri>
+              <name>fruit4/Diffuse</name>
+            </script>
+          </material>
+        </visual>
+        <visual name='blossom1'>
+          <geometry>
+            <mesh>
+              <uri>model://tomato_32/meshes/tomato.dae</uri>
+              <submesh>
+                <name>Blossom1</name>
+              </submesh>
+            </mesh>
+          </geometry>
+          <material>
+            <script>
+              <uri>model://tomato_32/materials/scripts</uri>
+              <uri>model://tomato_32/materials/textures</uri>
+              <name>blossom1/Diffuse</name>
+            </script>
+          </material>
+        </visual>
+        <visual name='blossom2'>
+          <geometry>
+            <mesh>
+              <uri>model://tomato_32/meshes/tomato.dae</uri>
+              <submesh>
+                <name>Blossom2</name>
+              </submesh>
+            </mesh>
+          </geometry>
+          <material>
+            <script>
+              <uri>model://tomato_32/materials/scripts</uri>
+              <uri>model://tomato_32/materials/textures</uri>
+              <name>blossom2/Diffuse</name>
+            </script>
+          </material>
+        </visual>
+        <visual name='blossom3'>
+          <geometry>
+            <mesh>
+              <uri>model://tomato_32/meshes/tomato.dae</uri>
+              <submesh>
+                <name>Blossom3</name>
+              </submesh>
+            </mesh>
+          </geometry>
+          <material>
+            <script>
+              <uri>model://tomato_32/materials/scripts</uri>
+              <uri>model://tomato_32/materials/textures</uri>
+              <name>blossom3/Diffuse</name>
+            </script>
+          </material>
+        </visual>
+        <self_collide>0</self_collide>
+        <enable_wind>0</enable_wind>
+        <kinematic>0</kinematic>
+      </link>
+      <pose>3.39137 1.3664 0 0 -0 0</pose>
+    </model>
+    <model name='tomato_34'>
+      <static>1</static>
+      <link name='link'>
+        <collision name='collision'>
+          <geometry>
+            <box>
+              <size>0.1 0.1 1</size>
+            </box>
+          </geometry>
+          <max_contacts>10</max_contacts>
+          <surface>
+            <contact>
+              <ode/>
+            </contact>
+            <bounce/>
+            <friction>
+              <torsional>
+                <ode/>
+              </torsional>
+              <ode/>
+            </friction>
+          </surface>
+        </collision>
+        <visual name='branch'>
+          <geometry>
+            <mesh>
+              <uri>model://tomato_34/meshes/tomato.dae</uri>
+              <submesh>
+                <name>Branch1</name>
+              </submesh>
+            </mesh>
+          </geometry>
+          <material>
+            <script>
+              <uri>model://tomato_34/materials/scripts</uri>
+              <uri>model://tomato_34/materials/textures</uri>
+              <name>branch/Diffuse</name>
+            </script>
+          </material>
+        </visual>
+        <visual name='leaf1'>
+          <geometry>
+            <mesh>
+              <uri>model://tomato_34/meshes/tomato.dae</uri>
+              <submesh>
+                <name>Leaf1</name>
+              </submesh>
+            </mesh>
+          </geometry>
+          <material>
+            <script>
+              <uri>model://tomato_34/materials/scripts</uri>
+              <uri>model://tomato_34/materials/textures</uri>
+              <name>leaf1/Diffuse</name>
+            </script>
+          </material>
+        </visual>
+        <visual name='leaf2'>
+          <geometry>
+            <mesh>
+              <uri>model://tomato_34/meshes/tomato.dae</uri>
+              <submesh>
+                <name>Leaf2</name>
+              </submesh>
+            </mesh>
+          </geometry>
+          <material>
+            <script>
+              <uri>model://tomato_34/materials/scripts</uri>
+              <uri>model://tomato_34/materials/textures</uri>
+              <name>leaf2/Diffuse</name>
+            </script>
+          </material>
+        </visual>
+        <visual name='fruit1'>
+          <geometry>
+            <mesh>
+              <uri>model://tomato_34/meshes/tomato.dae</uri>
+              <submesh>
+                <name>Fruit1</name>
+              </submesh>
+            </mesh>
+          </geometry>
+          <material>
+            <script>
+              <uri>model://tomato_34/materials/scripts</uri>
+              <uri>model://tomato_34/materials/textures</uri>
+              <name>fruit1/Diffuse</name>
+            </script>
+          </material>
+        </visual>
+        <visual name='fruit2'>
+          <geometry>
+            <mesh>
+              <uri>model://tomato_34/meshes/tomato.dae</uri>
+              <submesh>
+                <name>Fruit2</name>
+              </submesh>
+            </mesh>
+          </geometry>
+          <material>
+            <script>
+              <uri>model://tomato_34/materials/scripts</uri>
+              <uri>model://tomato_34/materials/textures</uri>
+              <name>fruit2/Diffuse</name>
+            </script>
+          </material>
+        </visual>
+        <visual name='fruit3'>
+          <geometry>
+            <mesh>
+              <uri>model://tomato_34/meshes/tomato.dae</uri>
+              <submesh>
+                <name>Fruit3</name>
+              </submesh>
+            </mesh>
+          </geometry>
+          <material>
+            <script>
+              <uri>model://tomato_34/materials/scripts</uri>
+              <uri>model://tomato_34/materials/textures</uri>
+              <name>fruit3/Diffuse</name>
+            </script>
+          </material>
+        </visual>
+        <visual name='fruit4'>
+          <geometry>
+            <mesh>
+              <uri>model://tomato_34/meshes/tomato.dae</uri>
+              <submesh>
+                <name>Fruit4</name>
+              </submesh>
+            </mesh>
+          </geometry>
+          <material>
+            <script>
+              <uri>model://tomato_34/materials/scripts</uri>
+              <uri>model://tomato_34/materials/textures</uri>
+              <name>fruit4/Diffuse</name>
+            </script>
+          </material>
+        </visual>
+        <visual name='blossom1'>
+          <geometry>
+            <mesh>
+              <uri>model://tomato_34/meshes/tomato.dae</uri>
+              <submesh>
+                <name>Blossom1</name>
+              </submesh>
+            </mesh>
+          </geometry>
+          <material>
+            <script>
+              <uri>model://tomato_34/materials/scripts</uri>
+              <uri>model://tomato_34/materials/textures</uri>
+              <name>blossom1/Diffuse</name>
+            </script>
+          </material>
+        </visual>
+        <visual name='blossom2'>
+          <geometry>
+            <mesh>
+              <uri>model://tomato_34/meshes/tomato.dae</uri>
+              <submesh>
+                <name>Blossom2</name>
+              </submesh>
+            </mesh>
+          </geometry>
+          <material>
+            <script>
+              <uri>model://tomato_34/materials/scripts</uri>
+              <uri>model://tomato_34/materials/textures</uri>
+              <name>blossom2/Diffuse</name>
+            </script>
+          </material>
+        </visual>
+        <visual name='blossom3'>
+          <geometry>
+            <mesh>
+              <uri>model://tomato_34/meshes/tomato.dae</uri>
+              <submesh>
+                <name>Blossom3</name>
+              </submesh>
+            </mesh>
+          </geometry>
+          <material>
+            <script>
+              <uri>model://tomato_34/materials/scripts</uri>
+              <uri>model://tomato_34/materials/textures</uri>
+              <name>blossom3/Diffuse</name>
+            </script>
+          </material>
+        </visual>
+        <self_collide>0</self_collide>
+        <enable_wind>0</enable_wind>
+        <kinematic>0</kinematic>
+      </link>
+      <pose>5.06589 1.36387 0 0 -0 0</pose>
+    </model>
+    <model name='tomato_23'>
+      <static>1</static>
+      <link name='link'>
+        <collision name='collision'>
+          <geometry>
+            <box>
+              <size>0.1 0.1 1</size>
+            </box>
+          </geometry>
+          <max_contacts>10</max_contacts>
+          <surface>
+            <contact>
+              <ode/>
+            </contact>
+            <bounce/>
+            <friction>
+              <torsional>
+                <ode/>
+              </torsional>
+              <ode/>
+            </friction>
+          </surface>
+        </collision>
+        <visual name='branch'>
+          <geometry>
+            <mesh>
+              <uri>model://tomato_23/meshes/tomato.dae</uri>
+              <submesh>
+                <name>Branch1</name>
+              </submesh>
+            </mesh>
+          </geometry>
+          <material>
+            <script>
+              <uri>model://tomato_23/materials/scripts</uri>
+              <uri>model://tomato_23/materials/textures</uri>
+              <name>branch/Diffuse</name>
+            </script>
+          </material>
+        </visual>
+        <visual name='leaf1'>
+          <geometry>
+            <mesh>
+              <uri>model://tomato_23/meshes/tomato.dae</uri>
+              <submesh>
+                <name>Leaf1</name>
+              </submesh>
+            </mesh>
+          </geometry>
+          <material>
+            <script>
+              <uri>model://tomato_23/materials/scripts</uri>
+              <uri>model://tomato_23/materials/textures</uri>
+              <name>leaf1/Diffuse</name>
+            </script>
+          </material>
+        </visual>
+        <visual name='leaf2'>
+          <geometry>
+            <mesh>
+              <uri>model://tomato_23/meshes/tomato.dae</uri>
+              <submesh>
+                <name>Leaf2</name>
+              </submesh>
+            </mesh>
+          </geometry>
+          <material>
+            <script>
+              <uri>model://tomato_23/materials/scripts</uri>
+              <uri>model://tomato_23/materials/textures</uri>
+              <name>leaf2/Diffuse</name>
+            </script>
+          </material>
+        </visual>
+        <visual name='fruit1'>
+          <geometry>
+            <mesh>
+              <uri>model://tomato_23/meshes/tomato.dae</uri>
+              <submesh>
+                <name>Fruit1</name>
+              </submesh>
+            </mesh>
+          </geometry>
+          <material>
+            <script>
+              <uri>model://tomato_23/materials/scripts</uri>
+              <uri>model://tomato_23/materials/textures</uri>
+              <name>fruit1/Diffuse</name>
+            </script>
+          </material>
+        </visual>
+        <visual name='fruit2'>
+          <geometry>
+            <mesh>
+              <uri>model://tomato_23/meshes/tomato.dae</uri>
+              <submesh>
+                <name>Fruit2</name>
+              </submesh>
+            </mesh>
+          </geometry>
+          <material>
+            <script>
+              <uri>model://tomato_23/materials/scripts</uri>
+              <uri>model://tomato_23/materials/textures</uri>
+              <name>fruit2/Diffuse</name>
+            </script>
+          </material>
+        </visual>
+        <visual name='fruit3'>
+          <geometry>
+            <mesh>
+              <uri>model://tomato_23/meshes/tomato.dae</uri>
+              <submesh>
+                <name>Fruit3</name>
+              </submesh>
+            </mesh>
+          </geometry>
+          <material>
+            <script>
+              <uri>model://tomato_23/materials/scripts</uri>
+              <uri>model://tomato_23/materials/textures</uri>
+              <name>fruit3/Diffuse</name>
+            </script>
+          </material>
+        </visual>
+        <visual name='fruit4'>
+          <geometry>
+            <mesh>
+              <uri>model://tomato_23/meshes/tomato.dae</uri>
+              <submesh>
+                <name>Fruit4</name>
+              </submesh>
+            </mesh>
+          </geometry>
+          <material>
+            <script>
+              <uri>model://tomato_23/materials/scripts</uri>
+              <uri>model://tomato_23/materials/textures</uri>
+              <name>fruit4/Diffuse</name>
+            </script>
+          </material>
+        </visual>
+        <visual name='blossom1'>
+          <geometry>
+            <mesh>
+              <uri>model://tomato_23/meshes/tomato.dae</uri>
+              <submesh>
+                <name>Blossom1</name>
+              </submesh>
+            </mesh>
+          </geometry>
+          <material>
+            <script>
+              <uri>model://tomato_23/materials/scripts</uri>
+              <uri>model://tomato_23/materials/textures</uri>
+              <name>blossom1/Diffuse</name>
+            </script>
+          </material>
+        </visual>
+        <visual name='blossom2'>
+          <geometry>
+            <mesh>
+              <uri>model://tomato_23/meshes/tomato.dae</uri>
+              <submesh>
+                <name>Blossom2</name>
+              </submesh>
+            </mesh>
+          </geometry>
+          <material>
+            <script>
+              <uri>model://tomato_23/materials/scripts</uri>
+              <uri>model://tomato_23/materials/textures</uri>
+              <name>blossom2/Diffuse</name>
+            </script>
+          </material>
+        </visual>
+        <visual name='blossom3'>
+          <geometry>
+            <mesh>
+              <uri>model://tomato_23/meshes/tomato.dae</uri>
+              <submesh>
+                <name>Blossom3</name>
+              </submesh>
+            </mesh>
+          </geometry>
+          <material>
+            <script>
+              <uri>model://tomato_23/materials/scripts</uri>
+              <uri>model://tomato_23/materials/textures</uri>
+              <name>blossom3/Diffuse</name>
+            </script>
+          </material>
+        </visual>
+        <self_collide>0</self_collide>
+        <enable_wind>0</enable_wind>
+        <kinematic>0</kinematic>
+      </link>
+      <pose>6.69473 1.47055 0 0 -0 0</pose>
+    </model>
+    <model name='tomato_27_0'>
+      <static>1</static>
+      <link name='link'>
+        <collision name='collision'>
+          <geometry>
+            <box>
+              <size>0.1 0.1 1</size>
+            </box>
+          </geometry>
+          <max_contacts>10</max_contacts>
+          <surface>
+            <contact>
+              <ode/>
+            </contact>
+            <bounce/>
+            <friction>
+              <torsional>
+                <ode/>
+              </torsional>
+              <ode/>
+            </friction>
+          </surface>
+        </collision>
+        <visual name='branch'>
+          <geometry>
+            <mesh>
+              <uri>model://tomato_27/meshes/tomato.dae</uri>
+              <submesh>
+                <name>Branch1</name>
+              </submesh>
+            </mesh>
+          </geometry>
+          <material>
+            <script>
+              <uri>model://tomato_27/materials/scripts</uri>
+              <uri>model://tomato_27/materials/textures</uri>
+              <name>branch/Diffuse</name>
+            </script>
+          </material>
+        </visual>
+        <visual name='leaf1'>
+          <geometry>
+            <mesh>
+              <uri>model://tomato_27/meshes/tomato.dae</uri>
+              <submesh>
+                <name>Leaf1</name>
+              </submesh>
+            </mesh>
+          </geometry>
+          <material>
+            <script>
+              <uri>model://tomato_27/materials/scripts</uri>
+              <uri>model://tomato_27/materials/textures</uri>
+              <name>leaf1/Diffuse</name>
+            </script>
+          </material>
+        </visual>
+        <visual name='leaf2'>
+          <geometry>
+            <mesh>
+              <uri>model://tomato_27/meshes/tomato.dae</uri>
+              <submesh>
+                <name>Leaf2</name>
+              </submesh>
+            </mesh>
+          </geometry>
+          <material>
+            <script>
+              <uri>model://tomato_27/materials/scripts</uri>
+              <uri>model://tomato_27/materials/textures</uri>
+              <name>leaf2/Diffuse</name>
+            </script>
+          </material>
+        </visual>
+        <visual name='fruit1'>
+          <geometry>
+            <mesh>
+              <uri>model://tomato_27/meshes/tomato.dae</uri>
+              <submesh>
+                <name>Fruit1</name>
+              </submesh>
+            </mesh>
+          </geometry>
+          <material>
+            <script>
+              <uri>model://tomato_27/materials/scripts</uri>
+              <uri>model://tomato_27/materials/textures</uri>
+              <name>fruit1/Diffuse</name>
+            </script>
+          </material>
+        </visual>
+        <visual name='fruit2'>
+          <geometry>
+            <mesh>
+              <uri>model://tomato_27/meshes/tomato.dae</uri>
+              <submesh>
+                <name>Fruit2</name>
+              </submesh>
+            </mesh>
+          </geometry>
+          <material>
+            <script>
+              <uri>model://tomato_27/materials/scripts</uri>
+              <uri>model://tomato_27/materials/textures</uri>
+              <name>fruit2/Diffuse</name>
+            </script>
+          </material>
+        </visual>
+        <visual name='fruit3'>
+          <geometry>
+            <mesh>
+              <uri>model://tomato_27/meshes/tomato.dae</uri>
+              <submesh>
+                <name>Fruit3</name>
+              </submesh>
+            </mesh>
+          </geometry>
+          <material>
+            <script>
+              <uri>model://tomato_27/materials/scripts</uri>
+              <uri>model://tomato_27/materials/textures</uri>
+              <name>fruit3/Diffuse</name>
+            </script>
+          </material>
+        </visual>
+        <visual name='fruit4'>
+          <geometry>
+            <mesh>
+              <uri>model://tomato_27/meshes/tomato.dae</uri>
+              <submesh>
+                <name>Fruit4</name>
+              </submesh>
+            </mesh>
+          </geometry>
+          <material>
+            <script>
+              <uri>model://tomato_27/materials/scripts</uri>
+              <uri>model://tomato_27/materials/textures</uri>
+              <name>fruit4/Diffuse</name>
+            </script>
+          </material>
+        </visual>
+        <visual name='blossom1'>
+          <geometry>
+            <mesh>
+              <uri>model://tomato_27/meshes/tomato.dae</uri>
+              <submesh>
+                <name>Blossom1</name>
+              </submesh>
+            </mesh>
+          </geometry>
+          <material>
+            <script>
+              <uri>model://tomato_27/materials/scripts</uri>
+              <uri>model://tomato_27/materials/textures</uri>
+              <name>blossom1/Diffuse</name>
+            </script>
+          </material>
+        </visual>
+        <visual name='blossom2'>
+          <geometry>
+            <mesh>
+              <uri>model://tomato_27/meshes/tomato.dae</uri>
+              <submesh>
+                <name>Blossom2</name>
+              </submesh>
+            </mesh>
+          </geometry>
+          <material>
+            <script>
+              <uri>model://tomato_27/materials/scripts</uri>
+              <uri>model://tomato_27/materials/textures</uri>
+              <name>blossom2/Diffuse</name>
+            </script>
+          </material>
+        </visual>
+        <visual name='blossom3'>
+          <geometry>
+            <mesh>
+              <uri>model://tomato_27/meshes/tomato.dae</uri>
+              <submesh>
+                <name>Blossom3</name>
+              </submesh>
+            </mesh>
+          </geometry>
+          <material>
+            <script>
+              <uri>model://tomato_27/materials/scripts</uri>
+              <uri>model://tomato_27/materials/textures</uri>
+              <name>blossom3/Diffuse</name>
+            </script>
+          </material>
+        </visual>
+        <self_collide>0</self_collide>
+        <enable_wind>0</enable_wind>
+        <kinematic>0</kinematic>
+      </link>
+      <pose>8.1283 1.46433 0 0 -0 0</pose>
+    </model>
+    <state world_name='default'>
+      <sim_time>911 913000000</sim_time>
+      <real_time>915 776122056</real_time>
+      <wall_time>1713560354 950625306</wall_time>
+      <iterations>911913</iterations>
+      <model name='ground_plane'>
+        <pose>0 0 0 0 -0 0</pose>
+        <scale>1 1 1</scale>
+        <link name='link'>
+          <pose>0 0 0 0 -0 0</pose>
+          <velocity>0 0 0 0 -0 0</velocity>
+          <acceleration>0 0 0 0 -0 0</acceleration>
+          <wrench>0 0 0 0 -0 0</wrench>
+        </link>
+      </model>
+      <model name='mud_box'>
+        <pose>-0.187422 0.092569 -0.087 0 -0 0</pose>
+        <scale>1 1 1</scale>
+        <link name='link'>
+          <pose>-0.187422 0.092569 -0.087 0 -0 0</pose>
+          <velocity>0 0 0 0 -0 0</velocity>
+          <acceleration>0 0 0 0 -0 0</acceleration>
+          <wrench>0 0 0 0 -0 0</wrench>
+        </link>
+      </model>
+      <model name='mud_box_0'>
+        <pose>7.8155 0.086691 -0.087 0 -0 0</pose>
+        <scale>1 1 1</scale>
+        <link name='link'>
+          <pose>7.8155 0.086691 -0.087 0 -0 0</pose>
+          <velocity>0 0 0 0 -0 0</velocity>
+          <acceleration>0 0 0 0 -0 0</acceleration>
+          <wrench>0 0 0 0 -0 0</wrench>
+        </link>
+      </model>
+      <model name='my_grass_plane'>
+        <pose>-0.061313 0.222815 0.01 0 -0 0</pose>
+        <scale>1 1 1</scale>
+        <link name='link'>
+          <pose>-0.061313 0.222815 0.01 0 -0 0</pose>
+          <velocity>0 0 0 0 -0 0</velocity>
+          <acceleration>0 0 0 0 -0 0</acceleration>
+          <wrench>0 0 0 0 -0 0</wrench>
+        </link>
+      </model>
+      <model name='tomato_13'>
+        <pose>6.79214 -1.67789 0 0 -0 0</pose>
+        <scale>1 1 1</scale>
+        <link name='link'>
+          <pose>6.79214 -1.67789 0 0 -0 0</pose>
+          <velocity>0 0 0 0 -0 0</velocity>
+          <acceleration>0 0 0 0 -0 0</acceleration>
+          <wrench>0 0 0 0 -0 0</wrench>
+        </link>
+      </model>
+      <model name='tomato_16'>
+        <pose>1.62518 -0.075046 0 0 -0 0</pose>
+        <scale>1 1 1</scale>
+        <link name='link'>
+          <pose>1.62518 -0.075046 0 0 -0 0</pose>
+          <velocity>0 0 0 0 -0 0</velocity>
+          <acceleration>0 0 0 0 -0 0</acceleration>
+          <wrench>0 0 0 0 -0 0</wrench>
+        </link>
+      </model>
+      <model name='tomato_18'>
+        <pose>1.74822 -1.6207 0 0 -0 0</pose>
+        <scale>1 1 1</scale>
+        <link name='link'>
+          <pose>1.74822 -1.6207 0 0 -0 0</pose>
+          <velocity>0 0 0 0 -0 0</velocity>
+          <acceleration>0 0 0 0 -0 0</acceleration>
+          <wrench>0 0 0 0 -0 0</wrench>
+        </link>
+      </model>
+      <model name='tomato_23'>
+        <pose>6.69473 1.47055 0 0 -0 0</pose>
+        <scale>1 1 1</scale>
+        <link name='link'>
+          <pose>6.69473 1.47055 0 0 -0 0</pose>
+          <velocity>0 0 0 0 -0 0</velocity>
+          <acceleration>0 0 0 0 -0 0</acceleration>
+          <wrench>0 0 0 0 -0 0</wrench>
+        </link>
+      </model>
+      <model name='tomato_27'>
+        <pose>5.21401 -1.62664 0 0 -0 0</pose>
+        <scale>1 1 1</scale>
+        <link name='link'>
+          <pose>5.21401 -1.62664 0 0 -0 0</pose>
+          <velocity>0 0 0 0 -0 0</velocity>
+          <acceleration>0 0 0 0 -0 0</acceleration>
+          <wrench>0 0 0 0 -0 0</wrench>
+        </link>
+      </model>
+      <model name='tomato_27_0'>
+        <pose>8.1283 1.46433 0 0 -0 0</pose>
+        <scale>1 1 1</scale>
+        <link name='link'>
+          <pose>8.1283 1.46433 0 0 -0 0</pose>
+          <velocity>0 0 0 0 -0 0</velocity>
+          <acceleration>0 0 0 0 -0 0</acceleration>
+          <wrench>0 0 0 0 -0 0</wrench>
+        </link>
+      </model>
+      <model name='tomato_32'>
+        <pose>3.55545 1.3664 0 0 -0 0</pose>
+        <scale>1 1 1</scale>
+        <link name='link'>
+          <pose>3.55545 1.3664 0 0 -0 0</pose>
+          <velocity>0 0 0 0 -0 0</velocity>
+          <acceleration>0 0 0 0 -0 0</acceleration>
+          <wrench>0 0 0 0 -0 0</wrench>
+        </link>
+      </model>
+      <model name='tomato_34'>
+        <pose>5.24664 1.36387 0 0 -0 0</pose>
+        <scale>1 1 1</scale>
+        <link name='link'>
+          <pose>5.24664 1.36387 0 0 -0 0</pose>
+          <velocity>0 0 0 0 -0 0</velocity>
+          <acceleration>0 0 0 0 -0 0</acceleration>
+          <wrench>0 0 0 0 -0 0</wrench>
+        </link>
+      </model>
+      <model name='tomato_44'>
+        <pose>3.63139 -1.70999 0 0 -0 0</pose>
+        <scale>1 1 1</scale>
+        <link name='link'>
+          <pose>3.63139 -1.70999 0 0 -0 0</pose>
+          <velocity>0 0 0 0 -0 0</velocity>
+          <acceleration>0 0 0 0 -0 0</acceleration>
+          <wrench>0 0 0 0 -0 0</wrench>
+        </link>
+      </model>
+      <model name='tomato_44_0'>
+        <pose>8.19463 -1.70144 0 0 -0 0</pose>
+        <scale>1 1 1</scale>
+        <link name='link'>
+          <pose>8.19463 -1.70144 0 0 -0 0</pose>
+          <velocity>0 0 0 0 -0 0</velocity>
+          <acceleration>0 0 0 0 -0 0</acceleration>
+          <wrench>0 0 0 0 -0 0</wrench>
+        </link>
+      </model>
+      <model name='tomato_9'>
+        <pose>1.81459 1.42174 -0 0 -0 0</pose>
+        <scale>1 1 1</scale>
+        <link name='link'>
+          <pose>1.81459 1.42174 -0 0 -0 0</pose>
+          <velocity>0 0 0 0 -0 0</velocity>
+          <acceleration>0 0 0 0 -0 0</acceleration>
+          <wrench>0 0 0 0 -0 0</wrench>
+        </link>
+      </model>
+      <light name='sun'>
+        <pose>0 0 10 0 -0 0</pose>
+      </light>
+    </state>
+    <gui fullscreen='0'>
+      <camera name='user_camera'>
+        <pose>15.9799 -2.59171 10.8372 0 0.831642 3.0322</pose>
+        <view_controller>orbit</view_controller>
+        <projection_type>perspective</projection_type>
+      </camera>
+    </gui>
+  </world>
+</sdf>
